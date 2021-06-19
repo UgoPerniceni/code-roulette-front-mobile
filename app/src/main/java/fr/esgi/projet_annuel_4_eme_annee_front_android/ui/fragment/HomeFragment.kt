@@ -1,4 +1,4 @@
-package fr.esgi.projet_annuel_4_eme_annee_front_android.ui.notifications
+package fr.esgi.projet_annuel_4_eme_annee_front_android.ui.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,13 +8,13 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import fr.esgi.projet_annuel_4_eme_annee_front_android.databinding.FragmentNotificationsBinding
-import fr.esgi.projet_annuel_4_eme_annee_front_android.ui.viewModel.Notifications
+import fr.esgi.projet_annuel_4_eme_annee_front_android.databinding.FragmentHomeBinding
+import fr.esgi.projet_annuel_4_eme_annee_front_android.ui.viewModel.Home
 
-class NotificationsFragment : Fragment() {
+class HomeFragment : Fragment() {
 
-    private lateinit var notifications: Notifications
-    private var _binding: FragmentNotificationsBinding? = null
+    private lateinit var home: Home
+    private var _binding: FragmentHomeBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -25,14 +25,14 @@ class NotificationsFragment : Fragment() {
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        notifications =
-                ViewModelProvider(this).get(Notifications::class.java)
+        home =
+                ViewModelProvider(this).get(Home::class.java)
 
-        _binding = FragmentNotificationsBinding.inflate(inflater, container, false)
+        _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textNotifications
-        notifications.text.observe(viewLifecycleOwner, Observer {
+        val textView: TextView = binding.textHome
+        home.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })
         return root
