@@ -1,0 +1,2 @@
+rootProject.name = "Projet-annuel-front-android"
+include ':app'
