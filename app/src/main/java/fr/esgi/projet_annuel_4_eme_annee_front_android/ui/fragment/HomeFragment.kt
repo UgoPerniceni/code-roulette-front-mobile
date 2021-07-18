@@ -19,7 +19,5 @@ class HomeFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        findNavController().navigate(R.id.action_HomeFragment_to_DashboardFragment)
     }
 }

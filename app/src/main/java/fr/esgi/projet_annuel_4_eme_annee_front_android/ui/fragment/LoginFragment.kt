@@ -1,8 +1,5 @@
 package fr.esgi.projet_annuel_4_eme_annee_front_android.ui.fragment
 
-import android.app.Activity
-import android.content.Context
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.text.TextUtils
 import android.util.Log
@@ -14,8 +11,8 @@ import android.widget.EditText
 import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.NavHostFragment.findNavController
 import androidx.navigation.fragment.findNavController
+import fr.esgi.projet_annuel_4_eme_annee_front_android.MainActivity
 import fr.esgi.projet_annuel_4_eme_annee_front_android.R
 import fr.esgi.projet_annuel_4_eme_annee_front_android.ui.Preferences.AppPreferences
 import fr.esgi.projet_annuel_4_eme_annee_front_android.ui.model.Login
@@ -25,6 +22,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
+
 class LoginFragment: Fragment(), View.OnClickListener {
 
     private var emailEditText: EditText? = null
@@ -32,8 +30,9 @@ class LoginFragment: Fragment(), View.OnClickListener {
 
     private var loaderSpinner: ProgressBar? = null
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?,
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_login, container, false)
@@ -41,8 +40,8 @@ class LoginFragment: Fragment(), View.OnClickListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setViewByIds(view)
 
+        setViewByIds(view)
         view.findViewById<Button>(R.id.login).setOnClickListener(this)
     }
 
@@ -82,7 +81,7 @@ class LoginFragment: Fragment(), View.OnClickListener {
             Log.d("retrofit-login", login.toString())
 
             RetrofitApi.apiAuthService.login(Login("azerty@azerty.fr", "azerty")).enqueue(object : Callback<ResponseBody> {
-                override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>, ) {
+                override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
                     if(response.isSuccessful) {
                         Log.d("--- LoginFragment ---", response.toString())
                         Log.d("--- LoginFragment ---", response.raw().toString())
@@ -93,6 +92,7 @@ class LoginFragment: Fragment(), View.OnClickListener {
 
                         AppPreferences.token = token
 
+                        (activity as MainActivity).navViewVisible()
                         findNavController().navigate(R.id.action_navigation_login_to_navigation_home)
                     } else {
                         Toast.makeText(context, "Error Occurred: ${response.message()}", Toast.LENGTH_LONG).show()
