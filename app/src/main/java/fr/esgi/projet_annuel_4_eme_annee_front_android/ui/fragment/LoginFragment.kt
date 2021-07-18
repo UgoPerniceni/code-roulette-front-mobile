@@ -1,5 +1,8 @@
 package fr.esgi.projet_annuel_4_eme_annee_front_android.ui.fragment
 
+import android.app.Activity
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.text.TextUtils
 import android.util.Log
@@ -11,7 +14,10 @@ import android.widget.EditText
 import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.NavHostFragment.findNavController
+import androidx.navigation.fragment.findNavController
 import fr.esgi.projet_annuel_4_eme_annee_front_android.R
+import fr.esgi.projet_annuel_4_eme_annee_front_android.ui.Preferences.AppPreferences
 import fr.esgi.projet_annuel_4_eme_annee_front_android.ui.model.Login
 import fr.esgi.projet_annuel_4_eme_annee_front_android.ui.retrofit.RetrofitApi
 import okhttp3.ResponseBody
@@ -78,9 +84,16 @@ class LoginFragment: Fragment(), View.OnClickListener {
             RetrofitApi.apiAuthService.login(Login("azerty@azerty.fr", "azerty")).enqueue(object : Callback<ResponseBody> {
                 override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>, ) {
                     if(response.isSuccessful) {
-                        Log.d("retrofit-success", response.toString())
-                        Log.d("retrofit-success", response.raw().toString())
-                        Log.d("retrofit-success", response.headers().get("Authorization"))
+                        Log.d("--- LoginFragment ---", response.toString())
+                        Log.d("--- LoginFragment ---", response.raw().toString())
+
+                        val token = response.headers().get("Authorization")
+
+                        Log.d("--- LoginFragment ---", token)
+
+                        AppPreferences.token = token
+
+                        findNavController().navigate(R.id.action_navigation_login_to_navigation_home)
                     } else {
                         Toast.makeText(context, "Error Occurred: ${response.message()}", Toast.LENGTH_LONG).show()
                     }
@@ -88,11 +101,13 @@ class LoginFragment: Fragment(), View.OnClickListener {
                 }
 
                 override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
-                    Log.d("retrofit-failure", call.toString())
+                    Log.d("--- LoginFragment ---", call.toString())
                     loaderGone()
                 }
             })
         }
+
+        loaderGone()
     }
 
     private fun formIsValid(): Boolean {

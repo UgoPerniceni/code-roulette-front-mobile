@@ -8,6 +8,7 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import fr.esgi.projet_annuel_4_eme_annee_front_android.databinding.ActivityMainBinding
+import fr.esgi.projet_annuel_4_eme_annee_front_android.ui.Preferences.AppPreferences
 
 class MainActivity : AppCompatActivity() {
 
@@ -18,6 +19,8 @@ class MainActivity : AppCompatActivity() {
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        AppPreferences.setup(applicationContext)
 
         val navView: BottomNavigationView = binding.navView
 

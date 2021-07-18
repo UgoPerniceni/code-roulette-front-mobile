@@ -9,7 +9,10 @@ import retrofit2.http.POST
 
 
 interface AuthService {
-    @Headers("Content-Type: application/json")
+    @Headers(
+        "Content-Type: application/json",
+        "No-Authentication: skipInterceptor"
+        )
     @POST("auth/login")
     fun login(@Body body: Login): Call<ResponseBody>
 }
