@@ -4,6 +4,7 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_ranking">Ranking</string>
     <string name="title_notifications">Notifications</string>
+    <string name="title_setting">Settings</string>
     <string name="title_login">Login</string>
     <string name="title_user_rank">User\'s rank</string>
     <!-- Strings related to login -->

@@ -90,11 +90,11 @@ class UserRankFragment : Fragment(), View.OnClickListener {
         // Set the data and color to the pie chart
 
         gamesWon?.let {
-            pieChart?.addPieSlice(PieModel("Win", it.toFloat(), Color.parseColor("#66BB6A")))
+            pieChart?.addPieSlice(PieModel("Win", it.toFloat(), Color.parseColor("#EF5350")))
         }
 
         gamesPlayed?.let {
-            pieChart?.addPieSlice(PieModel("Loose", it.toFloat(), Color.parseColor("#EF5350")))
+            pieChart?.addPieSlice(PieModel("Loose", it.toFloat(), Color.parseColor("#66BB6A")))
         }
 
         pieChart?.startAnimation()
