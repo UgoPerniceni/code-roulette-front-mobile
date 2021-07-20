@@ -50,7 +50,7 @@ class UserRankFragment : Fragment(), View.OnClickListener {
 
         textViewWinRate = view.findViewById(R.id.user_rank_fragment_win_rate)
 
-        view.findViewById<Button>(R.id.user_rank_fragment_return).setOnClickListener(this)
+        // view.findViewById<Button>(R.id.user_rank_fragment_return).setOnClickListener(this)
 
         textViewPosition?.apply {
             this.text = arguments?.getInt("position").toString()
@@ -101,10 +101,10 @@ class UserRankFragment : Fragment(), View.OnClickListener {
     }
 
     override fun onClick(view: View?) {
-        when(view?.id) {
+/*        when(view?.id) {
             R.id.user_rank_fragment_return -> {
                 findNavController().navigate(R.id.action_navigation_rank_user_to_navigation_ranking)
             }
-        }
+        }*/
     }
 }

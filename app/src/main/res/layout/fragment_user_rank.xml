@@ -354,12 +354,12 @@
 
         </androidx.cardview.widget.CardView>
 
-        <Button
+<!--        <Button
             android:id="@+id/user_rank_fragment_return"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="return"
-            android:layout_marginBottom="20dp" />
+            android:layout_marginBottom="20dp" />-->
 
     </LinearLayout>
 

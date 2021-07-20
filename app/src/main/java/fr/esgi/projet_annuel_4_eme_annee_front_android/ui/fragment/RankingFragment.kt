@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import fr.esgi.projet_annuel_4_eme_annee_front_android.R
@@ -39,6 +40,7 @@ class RankingFragment : Fragment(), View.OnClickListener {
         recyclerView?.apply {
             layoutManager = LinearLayoutManager(this.context)
             adapter = RankAdapter(users)
+            addItemDecoration(DividerItemDecoration(this.context, DividerItemDecoration.VERTICAL))
         }
 
         RetrofitApi.apiUserService.getUsers().enqueue(object : Callback<MutableList<User>>{

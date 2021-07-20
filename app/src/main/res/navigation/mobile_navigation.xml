@@ -49,7 +49,7 @@
     <fragment
         android:id="@+id/navigation_setting"
         android:name="fr.esgi.projet_annuel_4_eme_annee_front_android.ui.fragment.SettingFragment"
-        android:label="@string/title_notifications"
+        android:label="@string/title_setting"
         tools:layout="@layout/fragment_setting" >
         <action
             android:id="@+id/action_navigation_setting_to_navigation_home"

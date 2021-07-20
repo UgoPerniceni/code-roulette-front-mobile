@@ -20,5 +20,6 @@
     <color name="Win">#66BB6A</color>
     <color name="Loose">#EF5350</color>
     <color name="Java">#29B6F6</color>
+    <color name="Progress">#ff802b</color>
 
 </resources>

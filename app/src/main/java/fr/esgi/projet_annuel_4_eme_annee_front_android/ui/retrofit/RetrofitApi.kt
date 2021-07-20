@@ -4,6 +4,7 @@ import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import fr.esgi.projet_annuel_4_eme_annee_front_android.ui.retrofit.interceptor.HeaderInterceptor
 import fr.esgi.projet_annuel_4_eme_annee_front_android.ui.retrofit.service.AuthService
+import fr.esgi.projet_annuel_4_eme_annee_front_android.ui.retrofit.service.GameService
 import fr.esgi.projet_annuel_4_eme_annee_front_android.ui.retrofit.service.UserService
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
@@ -40,5 +41,9 @@ object RetrofitApi {
 
     val apiUserService : UserService by lazy{
         retrofit.create(UserService::class.java)
+    }
+
+    val apiGameService : GameService by lazy{
+        retrofit.create(GameService::class.java)
     }
 }

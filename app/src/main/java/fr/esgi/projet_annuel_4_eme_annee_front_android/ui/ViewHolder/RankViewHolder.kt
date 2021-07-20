@@ -8,8 +8,7 @@ import fr.esgi.projet_annuel_4_eme_annee_front_android.R
 import fr.esgi.projet_annuel_4_eme_annee_front_android.ui.model.User
 
 class RankViewHolder(inflater: LayoutInflater, parent: ViewGroup) :
-    RecyclerView.ViewHolder(inflater.inflate(R.layout.rank_item, parent, false))
-{
+    RecyclerView.ViewHolder(inflater.inflate(R.layout.rank_item, parent, false)) {
     private var position: TextView? = null
     private var userName: TextView? = null
     private var elo: TextView? = null

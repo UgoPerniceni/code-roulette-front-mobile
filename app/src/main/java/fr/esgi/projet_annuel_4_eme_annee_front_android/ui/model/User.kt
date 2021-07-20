@@ -5,6 +5,7 @@ import com.google.gson.annotations.SerializedName
 class User(
     var position: Int?,
 
+    @SerializedName("id") var id: String?,
     @SerializedName("email") var email: String?,
     @SerializedName("userName") var userName: String?,
     @SerializedName("firstName") var firstName: String?,

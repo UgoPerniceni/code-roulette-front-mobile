@@ -91,6 +91,7 @@ class LoginFragment: Fragment(), View.OnClickListener {
                         Log.d("--- LoginFragment ---", token)
 
                         AppPreferences.token = token
+                        AppPreferences.email = "azerty@azerty.fr"
 
                         (activity as MainActivity).navViewVisible()
                         findNavController().navigate(R.id.action_navigation_login_to_navigation_home)
