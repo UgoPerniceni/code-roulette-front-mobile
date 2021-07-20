@@ -72,14 +72,21 @@ class UserRankFragment : Fragment(), View.OnClickListener {
         }
 
         textViewWinRate?.apply {
-            var wr = "0";
+            var winrate = 0.0;
 
             try {
-                wr = (gamesPlayed?.let { gamesWon?.div(it) })?.times(100).toString()
-                this.text = "$wr %"
+                var gamesPlayedValue = 0
+                var gamesWonValue = 0
+
+                gamesPlayed?.let { gamesPlayedValue = it; }
+                gamesWon?.let { gamesWonValue = it; }
+
+                winrate = (gamesWonValue.toDouble() / gamesPlayedValue) * 100
+                this.text = "$winrate %"
             } catch (e : ArithmeticException){}
             finally {
-                this.text = "$wr %"
+                val roundedWinRate = String.format("%.2f", winrate)
+                this.text = "$roundedWinRate %"
             }
         }
 
@@ -90,11 +97,11 @@ class UserRankFragment : Fragment(), View.OnClickListener {
         // Set the data and color to the pie chart
 
         gamesWon?.let {
-            pieChart?.addPieSlice(PieModel("Win", it.toFloat(), Color.parseColor("#EF5350")))
+            pieChart?.addPieSlice(PieModel("Win", it.toFloat(), Color.parseColor("#66BB6A")))
         }
 
-        gamesPlayed?.let {
-            pieChart?.addPieSlice(PieModel("Loose", it.toFloat(), Color.parseColor("#66BB6A")))
+        gamesLost?.let {
+            pieChart?.addPieSlice(PieModel("Loose", it.toFloat(), Color.parseColor("#EF5350")))
         }
 
         pieChart?.startAnimation()
