@@ -18,6 +18,8 @@ import fr.esgi.projet_annuel_4_eme_annee_front_android.ui.retrofit.RetrofitApi
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 
 class HomeFragment : Fragment() {
 
@@ -58,6 +60,7 @@ class HomeFragment : Fragment() {
                     games.forEach { game ->
                         game.usersInGame?.forEach { userIg ->
                             if(userIg.user?.email == emailUserConnected) {
+                                game.dateJSON?.let { game.createdAtStr = formatJsonDate(it) }
                                 gamesOfUser.add(game)
                             }
                         }
@@ -73,5 +76,52 @@ class HomeFragment : Fragment() {
                 Log.d("--- HomeFragment ---", call.toString())
             }
         })
+    }
+
+    fun formatJsonDate(strings: Array<String>): String {
+        // rebuild Date from Array of date might change it later
+
+        var dateStr = ""
+
+        var month = strings[1]
+        var day = strings[2]
+        var hour = strings[3]
+        var min = strings[4]
+        var second = strings[5]
+
+        if (month.length == 1) {
+            month = "0".plus(month)
+        }
+
+        if (day.length == 1) {
+            day = "0".plus(day)
+        }
+
+        if (hour.length == 1) {
+            hour = "0".plus(hour)
+        }
+
+        if (min.length == 1) {
+            min = "0".plus(min)
+        }
+
+        if (second.length == 1) {
+            second = "0".plus(second)
+        }
+
+        dateStr = dateStr
+            .plus(day)
+            .plus("/")
+            .plus(month)
+            .plus("/")
+            .plus(strings[0])
+            .plus(" ")
+            .plus(hour)
+            .plus(":")
+            .plus(min)
+            .plus(":")
+            .plus(second)
+
+        return dateStr
     }
 }

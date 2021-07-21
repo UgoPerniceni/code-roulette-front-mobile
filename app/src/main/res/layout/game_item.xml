@@ -59,7 +59,58 @@
         app:layout_constraintEnd_toStartOf="@+id/guideline_vertical_0"
         />
 
-        <LinearLayout
+    <TextView
+        android:id="@+id/game_users_in_game"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:text="participants : "
+
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/game_created_at"
+        app:layout_constraintStart_toEndOf="@+id/guideline_vertical_0"
+        app:layout_constraintEnd_toStartOf="@+id/game_users_spinner" />
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:id="@+id/game_users_spinner"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/game_created_at"
+        app:layout_constraintStart_toEndOf="@+id/game_users_in_game"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+
+    <TextView
+        android:id="@+id/game_created_at"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+
+        tools:text="date"
+        app:layout_constraintTop_toBottomOf="@+id/game_users_spinner"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/guideline_vertical_0"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+
+    <!--    <TextView
+            android:id="@+id/game_turn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:textStyle="bold"
+
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/rank_hr"
+            app:layout_constraintEnd_toStartOf="@+id/rank_elo_ll"
+
+            tools:text="status" />-->
+
+    <!--    <LinearLayout
+            android:id="@+id/rank_elo_ll"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
 
@@ -72,52 +123,14 @@
                 android:layout_height="wrap_content"
                 android:textSize="15sp"
 
-                tools:text="Date : " />
+                tools:text="Winner : " />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="15sp"
 
-                tools:text="date" />
-        </LinearLayout>
-
-<!--    <TextView
-        android:id="@+id/game_turn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:textStyle="bold"
-
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/rank_hr"
-        app:layout_constraintEnd_toStartOf="@+id/rank_elo_ll"
-
-        tools:text="status" />-->
-
-<!--    <LinearLayout
-        android:id="@+id/rank_elo_ll"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/guideline_vertical_0"
-        app:layout_constraintEnd_toEndOf="parent">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="15sp"
-
-            tools:text="Winner : " />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="15sp"
-
-            tools:text="name" />
-    </LinearLayout>-->
+                tools:text="name" />
+        </LinearLayout>-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
