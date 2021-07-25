@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import fr.esgi.projet_annuel_4_eme_annee_front_android.MainActivity
 import fr.esgi.projet_annuel_4_eme_annee_front_android.R
 import fr.esgi.projet_annuel_4_eme_annee_front_android.ui.Adapter.GameAdapter
 import fr.esgi.projet_annuel_4_eme_annee_front_android.ui.Preferences.AppPreferences
@@ -35,6 +36,10 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        if(activity != null) {
+            (activity as MainActivity).showLoader()
+        }
 
         recyclerView = view.findViewById(R.id.recycle_games)
 
@@ -70,10 +75,18 @@ class HomeFragment : Fragment() {
                 } else {
                     Toast.makeText(context, "Error Occurred: ${response.message()}", Toast.LENGTH_LONG).show()
                 }
+
+                if(activity != null) {
+                    (activity as MainActivity).hideLoader()
+                }
             }
 
             override fun onFailure(call: Call<MutableList<Game>>, t: Throwable) {
                 Log.d("--- HomeFragment ---", call.toString())
+
+                if(activity != null) {
+                    (activity as MainActivity).hideLoader()
+                }
             }
         })
     }

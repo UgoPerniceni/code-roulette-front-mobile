@@ -10,6 +10,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import fr.esgi.projet_annuel_4_eme_annee_front_android.MainActivity
 import fr.esgi.projet_annuel_4_eme_annee_front_android.R
 import org.eazegraph.lib.charts.PieChart
 import org.eazegraph.lib.models.PieModel
@@ -39,6 +40,10 @@ class UserRankFragment : Fragment(), View.OnClickListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        if(activity != null) {
+            (activity as MainActivity).hideLoader()
+        }
 
         pieChart = view.findViewById(R.id.piechart);
 

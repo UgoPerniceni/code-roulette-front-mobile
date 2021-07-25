@@ -62,7 +62,9 @@ class LoginFragment: Fragment(), View.OnClickListener {
     }
 
     private fun login() {
-        loaderVisible()
+        if(activity != null) {
+            (activity as MainActivity).showLoader()
+        }
 
         if(formIsValid()) {
 
@@ -80,7 +82,7 @@ class LoginFragment: Fragment(), View.OnClickListener {
             val login = Login(email, password)
             Log.d("retrofit-login", login.toString())
 
-            RetrofitApi.apiAuthService.login(Login("azerty@azerty.fr", "azerty")).enqueue(object : Callback<ResponseBody> {
+            RetrofitApi.apiAuthService.login(login).enqueue(object : Callback<ResponseBody> {
                 override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
                     if(response.isSuccessful) {
                         Log.d("--- LoginFragment ---", response.toString())
@@ -98,17 +100,19 @@ class LoginFragment: Fragment(), View.OnClickListener {
                     } else {
                         Toast.makeText(context, "Error Occurred: ${response.message()}", Toast.LENGTH_LONG).show()
                     }
-                    loaderGone()
+                    if(activity != null) {
+                        (activity as MainActivity).hideLoader()
+                    }
                 }
 
                 override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
                     Log.d("--- LoginFragment ---", call.toString())
-                    loaderGone()
+                    if(activity != null) {
+                        (activity as MainActivity).hideLoader()
+                    }
                 }
             })
         }
-
-        loaderGone()
     }
 
     private fun formIsValid(): Boolean {
@@ -129,13 +133,5 @@ class LoginFragment: Fragment(), View.OnClickListener {
         }
 
         return validateForm
-    }
-
-    fun loaderVisible() {
-        loaderSpinner?.visibility = View.VISIBLE
-    }
-
-    fun loaderGone() {
-        loaderSpinner?.visibility = View.GONE
     }
 }

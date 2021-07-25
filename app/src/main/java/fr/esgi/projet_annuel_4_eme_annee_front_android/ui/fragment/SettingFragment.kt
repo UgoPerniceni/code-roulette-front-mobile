@@ -8,6 +8,7 @@ import android.widget.Button
 import android.widget.ProgressBar
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import fr.esgi.projet_annuel_4_eme_annee_front_android.MainActivity
 import fr.esgi.projet_annuel_4_eme_annee_front_android.R
 
 class SettingFragment : Fragment() {
@@ -22,6 +23,10 @@ class SettingFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        if(activity != null) {
+            (activity as MainActivity).hideLoader()
+        }
 
         view.findViewById<Button>(R.id.fragment_setting_button).setOnClickListener {
             logout()
