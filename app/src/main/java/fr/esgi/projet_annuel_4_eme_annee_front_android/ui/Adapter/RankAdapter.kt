@@ -33,6 +33,7 @@ class RankAdapter(private val users:List<User>) : RecyclerView.Adapter<RankViewH
             )
 
             view.findNavController().navigate(R.id.action_navigation_ranking_to_navigation_rank_user, bundle)
+            //view.findNavController().navigate(R.id.navigation_rank_user, bundle)
         }
     }
 

@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_login">
+    app:startDestination="@id/navigation_login">
 
     <fragment
         android:id="@+id/navigation_login"
@@ -69,6 +69,7 @@
         tools:layout="@layout/fragment_user_rank" >
         <action
             android:id="@+id/action_navigation_rank_user_to_navigation_ranking"
-            app:destination="@id/navigation_ranking" />
+            app:destination="@id/navigation_ranking"
+            app:popUpTo="@+id/navigation_ranking" />
     </fragment>
 </navigation>
