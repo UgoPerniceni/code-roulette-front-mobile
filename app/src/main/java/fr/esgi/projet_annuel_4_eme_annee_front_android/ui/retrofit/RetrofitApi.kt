@@ -12,7 +12,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 
 object RetrofitApi {
-    private const val BASE_URL: String = "http://34.253.194.75/api/"
+    private const val BASE_URL: String = "http://34.248.4.98/api/"
 
     private val gson : Gson by lazy {
         GsonBuilder().setLenient().create()
